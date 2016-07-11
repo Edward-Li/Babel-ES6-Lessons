@@ -125,7 +125,7 @@ tokenize(TOKEN_G, '3x + 4')
 
 
 
-
+//sticky 
 var r = /hello\d/y;
 r.sticky // true
 

@@ -1,4 +1,5 @@
 
+//ES6在Number对象上，新提供了`Number.isFinite()`和`Number.isNaN()`两个方法，用来检查`Infinite`和`NaN`这两个特殊值
 //Number.isFinite(), Number.isNaN()  ES6在Number对象上，新提供了`Number.isFinite()`和`Number.isNaN()`两个方法,传统的全局方法`isFinite()`和`isNaN()`
 Number.isFinite(15); // true
 Number.isFinite(0.8); // true
@@ -9,7 +10,7 @@ Number.isFinite('foo'); // false
 Number.isFinite('15'); // false
 Number.isFinite(true); // false
 
-
+//方法 parseInt() 和 parseFloat() 在不能解析指定的字符串时就返回这个值
 Number.isNaN(NaN) // true
 Number.isNaN(15) // false
 Number.isNaN('15') // false
@@ -17,6 +18,21 @@ Number.isNaN(true) // false
 Number.isNaN(9/NaN) // true
 Number.isNaN('true'/0) // true
 Number.isNaN('true'/'true') // true
+
+
+//传统的全局方法`isFinite()`和`isNaN()`的区别在于，传统方法先调用`Number()`将非数值的值转为数值，再进行判断，而这两个新方法只对数值有效，非数值一律返回`false`。
+isFinite(25) // true
+isFinite("25") // true
+Number.isFinite(25) // true
+Number.isFinite("25") // false
+
+isNaN(NaN) // true
+isNaN("NaN") // true
+Number.isNaN(NaN) // true
+Number.isNaN("NaN") // false
+
+
+
 
 //Number.parseInt(), Number.parseFloat()     ES6将全局方法`parseInt()`和`parseFloat()`，移植到Number对象上面，行为完全保持不变
 // ES5的写法
@@ -36,8 +52,9 @@ Number.isInteger("15") // false
 Number.isInteger(true) // false
 
 
-//Number.EPSILON
-
+//Number.EPSILON  为浮点数计算，设置一个误差范围
+console.log(0.1 + 0.2);
+console.log(0.1 + 0.2 - 0.3);
 
 
 //安全整数和Number.isSafeInteger()
@@ -48,6 +65,10 @@ console.log(Math.pow(-2, 53));  // 9007199254740992
 
 console.log(Math.pow(2, 53) === Math.pow(2, 53) + 1)
 // true
+
+Number.isSafeInteger(9007199254740990) // true
+Number.isSafeInteger(9007199254740992) // false
+
 //ES6引入了`Number.MAX_SAFE_INTEGER`和`Number.MIN_SAFE_INTEGER`这两个常量，用来表示这个范围的上下限
 Number.MAX_SAFE_INTEGER
 Number.MIN_SAFE_INTEGER
@@ -125,6 +146,7 @@ Math.hypot(-3);          // 3
 
 
 //指数运算符
+//当前不支持
 2 ** 2 // 4
 2 ** 3 // 8
 
