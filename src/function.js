@@ -257,3 +257,24 @@ let insert = (value) => ({into: (array) => ({after: (afterValue) => {
 insert(2).into([1, 3]).after(1); //[1, 2, 3]
 
 
+
+
+//函数邦定
+function Obj(){
+    this.value = "Obj value";
+}
+
+var n = { value: "n value" };
+
+function Fun1() {
+    console.log(this.value);
+}
+
+Fun1.call(new Obj()); //value
+Fun1.call(n); //value
+
+->
+n::Fun1;
+
+
+
